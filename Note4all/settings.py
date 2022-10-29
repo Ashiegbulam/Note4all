@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-j($-dilj&_mx(1m8a4jv9mq6*zr$$eegzq1-e8ha7quku#d()#"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -142,7 +142,7 @@ if os.getcwd() == '/app':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     # Allow all host headers.
-    ALLOWED_HOSTS =['*']
+    ALLOWED_HOSTS =['note4all.herokuapp.com']
 
     #Static asset configuration
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
