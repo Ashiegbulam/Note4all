@@ -1,0 +1,22 @@
+{% extends "mynote/base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+  <div class="jumbotron">
+    <h1>Note For All.</h1>
+    <h5>The Best Jottings</h5>
+  </div>
+{% endblock header %}
+
+{% block content %}
+
+  <form method="post" action="{% url 'users:login' %}" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    {% buttons %}
+      <button name="submit" class="btn btn-primary">Log in</button>
+    {% endbuttons %}
+    <input type="hidden" name="next" value="{% url 'mynote:index' %}" />
+  </form>
+{% endblock content %}

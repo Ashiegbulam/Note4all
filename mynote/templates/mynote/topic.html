@@ -1,0 +1,34 @@
+{% extends "mynote/base.html" %}
+
+{% block header %}
+  <h1>Course: {{ course }}</h1>
+{% endblock header%}
+
+{% block content %}
+
+<h2>Topics:</h2>
+
+    {% for topic in topics %}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>
+            {{ topic.date_started|date:'M d, Y H:i' }}
+          </h4>
+          <small class="panel">
+            <a href="{% url 'mynote:edit_topic' topic.id %}">edit topic</a>
+          </small>
+        </div>
+        <div class="panel-body">
+          <font size="+1">
+            <a href="{% url 'mynote:topic' topic.id %}">{{ topic }}</a>
+          </font>
+        </div>
+      </div> <!-- panel -->
+    {% empty %}
+      <h3>No topic for this course.</h3>
+    {% endfor %}
+
+<p>
+  <h3><a href="{% url 'mynote:new_topic' course.id %}">New Topic</a></h3>
+</p>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends "mynote/base.html" %}
+
+{% block header %}
+  <small>
+    <h4><a href="{% url 'mynote:new_course' %}">New course?</a></h4>
+  </small>
+  <h1>
+    Your courses
+  </h1>
+  {% endblock header%}
+
+{% block content %}
+
+<ul>
+    {% for course in courses %}
+      <li>
+        <h3>
+          <a href="{% url 'mynote:course' course.id %}">{{ course }}</a>
+        </h3>
+      </li>
+    {% empty %}
+      <li>No course have been added yet.</li>
+    {% endfor %}
+    
+</ul>
+<p>Note: You cannot edit after adding.</p>
+
+{% endblock content %}

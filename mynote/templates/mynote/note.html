@@ -1,0 +1,31 @@
+{% extends "mynote/base.html" %}
+
+{% block header %}
+ <h2>Topic: {{ topic }}</h2>
+{% endblock header %}
+
+{% block content %}
+<p>
+  <a href="{% url 'mynote:new_note' topic.id %}">Write notes</a>
+</p>
+
+{% for note in notes %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>
+      {{ note.date_started|date:'M d, Y H:i' }}
+      <small class="panel">
+        <a href="{% url 'mynote:edit_note' note.id %}">Edit Note</a>
+      </small>
+    </h4>
+  </div>
+  <div class="panel-body">
+    {{ note.notes|linebreaks }}
+  </div>
+</div> <!-- panel -->
+
+{% empty %}
+  <h3>No notes for this topic.</h3>
+
+{% endfor %}
+{% endblock content %}

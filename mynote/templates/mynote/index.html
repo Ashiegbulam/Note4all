@@ -1,0 +1,18 @@
+{% extends "mynote/base.html" %}
+
+{% block header %}
+  <div class="jumbotron">
+    <h1>Note For All.</h1>
+    <h5>The Best Jottings</h5>
+  </div>
+{% endblock header %}
+
+{% block content %}
+  <h2>
+    <a href="{% url 'users:register' %}">Register an account</a> to join the
+    the users of this awesome note.
+  </h2>
+  <p>
+    Summarize your learnings with the best note you never knew you needed.
+  </p>
+{% endblock content %}
