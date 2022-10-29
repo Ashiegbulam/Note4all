@@ -1,1 +1,1 @@
-web: gunicorn note4all.wsgi --log-file -
+web: gunicorn Note4all.wsgi --log-file -
