@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -25,7 +25,7 @@ def courses(request):
 @login_required
 def course(request, course_id):
     """Show a single course and all it's topics."""
-    course = Course.objects.get(id=course_id)
+    course = get_object_or_404(Course, id=course_id)
 
     #making sure its only accessible to current user
     ensure_is_user(course, request)
@@ -37,7 +37,7 @@ def course(request, course_id):
 @login_required
 def topic(request, topic_id):
     """Show a single topic and it's notes."""
-    topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
     notes = topic.note_set.order_by('-date_started')
     context = {'topic': topic, 'notes': notes}
     return render(request, 'mynote/note.html', context)

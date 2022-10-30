@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-j($-dilj&_mx(1m8a4jv9mq6*zr$$eegzq1-e8ha7quku#d()#"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -61,7 +61,7 @@ ROOT_URLCONF = "Note4all.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'Note4all/templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -141,7 +141,7 @@ if os.getcwd() == '/app':
     # Honor the 'X-Forwarded-Proto' header for request.is_secure().
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-    # Allow all host headers.
+    DEBUG = False
     ALLOWED_HOSTS =['note4all.herokuapp.com']
 
     #Static asset configuration
