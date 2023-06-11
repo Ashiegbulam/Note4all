@@ -7,6 +7,7 @@ class Course(models.Model):
     course = models.CharField(max_length=100)
     date_started = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    public = False
 
     def __str__(self):
         """Return a string representation of the model."""
